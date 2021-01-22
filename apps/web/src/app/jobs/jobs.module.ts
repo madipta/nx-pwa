@@ -11,6 +11,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
+  declarations: [JobsComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class JobsModule {}

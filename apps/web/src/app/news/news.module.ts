@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AppCommonModule } from '../common/app-common.module';
-import { TopComponent } from './top.component';
+import { NewsComponent } from './news.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: TopComponent,
+    component: NewsComponent,
   },
 ];
 
 @NgModule({
-  declarations: [TopComponent],
+  declarations: [NewsComponent],
   imports: [CommonModule, AppCommonModule, RouterModule.forChild(routes)],
 })
-export class TopModule {}
+export class NewsModule {}

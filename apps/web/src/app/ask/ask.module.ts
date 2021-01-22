@@ -11,6 +11,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
+  declarations: [AskComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class AskModule {}

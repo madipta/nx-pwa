@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShowComponent } from './show.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AppCommonModule } from '../common/app-common.module';
+import { ShowComponent } from './show.component';
 
 export const routes: Routes = [
   {
@@ -11,6 +12,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [ShowComponent],
+  imports: [CommonModule, AppCommonModule, RouterModule.forChild(routes)],
 })
 export class ShowModule {}
