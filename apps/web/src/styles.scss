@@ -6,7 +6,7 @@
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(156, 163, 175, var(--tw-bg-opacity)) transparent;
+  scrollbar-color: rgba(229, 231, 235, var(--tw-bg-opacity)) transparent;
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -16,10 +16,10 @@
 
 *::-webkit-scrollbar-track {
   background: transparent;
+  height: 4px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
   border-radius: 20px;
-  /* border: 3px solid rgba(243, 244, 246, var(--tw-bg-opacity));*/
 }
