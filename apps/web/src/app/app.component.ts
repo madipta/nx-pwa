@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
   selector: 'nx-pwa-root',
   template: `
     <div class="flex bg-gradient-to-b from-blue-600 to-blue-800 py-3 shadow-xl">
-      <div class="flex items-center w-full px-1 max-w-screen-sm mx-auto">
+      <div class="flex w-full items-center px-1 max-w-screen-sm mx-auto">
         <h1 class="flex items-center">
           <img alt="NGPWA" src="./assets/icons/icon-72x72.png" class="w-9 h-9" />
           <span class="leading-tight text-blue-400 text-xl font-semibold ml-1">PWA</span>
@@ -18,12 +18,12 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
         </nav>
       </div>
     </div>
-    <div class="mb-12 max-w-screen-sm overflow-x-hidden overflow-y-auto mx-auto">
+    <div class="w-full mb-12 max-w-screen-sm overflow-x-hidden overflow-y-auto mx-auto">
       <router-outlet></router-outlet>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  @HostBinding('className') rootClass = 'relative flex flex-col h-screen';
+  @HostBinding('className') rootClass = 'relative flex flex-col h-screen overflow-hidden';
 }

@@ -2,10 +2,6 @@ import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
   {
-    path: 'top',
-    loadChildren: async() => (await import('./top/top.module')).TopModule,
-  },
-  {
     path: 'show',
     loadChildren: async() => (await import('./show/show.module')).ShowModule,
   },
@@ -18,9 +14,12 @@ export const appRoutes: Routes = [
     loadChildren: async() => (await import('./jobs/jobs.module')).JobsModule,
   },
   {
-    path: '',
-    pathMatch: 'full',
+    path: 'news',
     loadChildren: async() => (await import('./news/news.module')).NewsModule,
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: 'top',
+    loadChildren: async() => (await import('./top/top.module')).TopModule,
+  },
+  { path: '**', redirectTo: 'news', pathMatch: 'full' },
 ];

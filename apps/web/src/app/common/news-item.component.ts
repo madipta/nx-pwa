@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'nx-pwa-news-item',
@@ -9,7 +10,15 @@ import { Component, Input } from '@angular/core';
       </div>
       <div class="leading-snug text-sm ml-3">
         <p>
-          <a [href]="url" class="leading-tight font-medium text-base text-gray-600 mr-2">{{ title }}</a>
+          <a 
+            [href]="url" 
+            target="_blank"
+            *ngIf="!!domain"
+            class="cursor-pointer leading-tight font-medium text-base text-gray-600 mr-2">{{ title }}</a>
+          <a 
+            (click)="detail(url)"
+            *ngIf="!domain"
+            class="cursor-pointer leading-tight font-medium text-base text-gray-600 mr-2">{{ title }}</a>
           <span *ngIf="domain" class="text-xs text-gray-400">({{domain}})</span>
         </p>
         <p class="text-xs text-gray-400 mt-2">
@@ -36,4 +45,11 @@ export class NewsItemComponent {
   @Input() user = '';
   @Input() time_ago = '';
   @Input() comments_count = 0;
+
+  constructor(private route: Router) {}
+
+  detail(url) {
+    const id = url.split('=')[1];
+    this.route.navigate(['news', id]);
+  }
 }
