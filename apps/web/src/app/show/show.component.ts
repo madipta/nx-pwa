@@ -20,6 +20,7 @@ import { HnService, NewsType } from '../services/hn.service';
       <div nxPwaNewsBody>
         <nx-pwa-news-item
           *ngFor="let res of data.result; index as i; trackBy: trackByFn"
+          [item_id]="res.id"
           [points]="(data.page - 1) * 30 + i + 1"
           [url]="res.url"
           [title]="res.title"

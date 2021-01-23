@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AppCommonModule } from '../common/app-common.module';
 import { NewsComponent } from './news.component';
+import { NewsDetailComponent } from './news-detail.component';
+import { NewsCommentComponent } from './news-comment.component';
 
 export const routes: Routes = [
   {
@@ -11,12 +13,12 @@ export const routes: Routes = [
   },
   {
     path: ':id',
-    component: NewsComponent,
+    component: NewsDetailComponent,
   },
 ];
 
 @NgModule({
-  declarations: [NewsComponent],
+  declarations: [NewsComponent, NewsDetailComponent, NewsCommentComponent],
   imports: [CommonModule, AppCommonModule, RouterModule.forChild(routes)],
 })
 export class NewsModule {}
