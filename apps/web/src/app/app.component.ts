@@ -28,12 +28,7 @@ import { HnService } from './services/hn.service';
         </h1>
         <nav class="flex-grow flex items-center justify-end text-white text-xs">
           <a routerLink="/news/top" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Top</a>
-          <a
-            routerLink="/news"
-            routerLinkActive="bg-blue-500"
-            [routerLinkActiveOptions]="{ exact: true }"
-            class="px-2 py-1 rounded mr-1"
-          >News</a>
+          <a routerLink="/news/newest" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1" >News</a>
           <a routerLink="/news/show" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Show</a>
           <a routerLink="/news/ask" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Ask</a>
           <a routerLink="/news/jobs" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Jobs</a>

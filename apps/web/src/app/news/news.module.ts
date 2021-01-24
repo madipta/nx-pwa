@@ -9,7 +9,23 @@ import { NewsCommentsComponent } from './news-comments.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'top',
+    component: NewsComponent,
+  },
+  {
+    path: 'newest',
+    component: NewsComponent,
+  },
+  {
+    path: 'show',
+    component: NewsComponent,
+  },
+  {
+    path: 'ask',
+    component: NewsComponent,
+  },
+  {
+    path: 'jobs',
     component: NewsComponent,
   },
   {
@@ -20,6 +36,7 @@ export const routes: Routes = [
     path: ':select',
     component: NewsComponent,
   },
+  { path: '**', redirectTo: 'newest', pathMatch: 'full' },
 ];
 
 @NgModule({

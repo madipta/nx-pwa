@@ -60,10 +60,14 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   onPrevClick() {
-    this.prev.emit();
+    if (this.page > 1) {
+      this.prev.emit();
+    }
   }
 
   onNextClick() {
-    this.next.emit();
+    if (!this.eof) {
+      this.next.emit();
+    }
   }
 }

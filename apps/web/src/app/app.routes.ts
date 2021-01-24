@@ -9,5 +9,5 @@ export const appRoutes: Routes = [
     path: 'jobs',
     loadChildren: async() => (await import('./jobs/jobs.module')).JobsModule,
   },
-  { path: '**', redirectTo: 'news', pathMatch: 'full' },
+  { path: '**', redirectTo: 'news/newest', pathMatch: 'full' },
 ];

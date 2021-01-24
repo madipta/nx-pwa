@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { NewsDetailDto } from './news-detail.dto';
 
-export type NewsType = 'top' | 'news' | 'show' | 'ask' | 'jobs';
+export type NewsType = 'top' | 'newest' | 'show' | 'ask' | 'jobs';
 
 export const NewsLinks: Record<NewsType, string> = {
   top: 'https://api.hackerwebapp.com/news',
-  news: 'https://api.hackerwebapp.com/newest',
+  newest: 'https://api.hackerwebapp.com/newest',
   show: 'https://api.hackerwebapp.com/show',
   ask: 'https://api.hackerwebapp.com/ask',
   jobs: 'https://api.hackerwebapp.com/jobs',
@@ -19,15 +19,20 @@ export class HnService {
   private fetchSubject = new Subject<any>();
   private eofSubject = new Subject<boolean>();
   private loadingSubject = new Subject<boolean>();
-  private currentUrl = '';
+  private currentNewsType = '';
+  private apiUrl = '';
   private currentPage = 1;
   private _eof = false;
-  readonly rowCount = 30;
+  private readonly rowCount = 30;
 
-  select(type: NewsType, page = 1): Observable<{ page: number; result: [] }> {
+  select(
+    type: NewsType | string,
+    page = 1
+  ): Observable<{ page: number; result: [] }> {
     this.eof = false;
-    this.currentUrl = NewsLinks[type];
-    this.currentPage = page;
+    this.currentNewsType = 'news/' + type;
+    this.apiUrl = NewsLinks[type];
+    this.currentPage = page || 1;
     this.fetchNews();
     return this.fetchSubject.asObservable();
   }
@@ -49,27 +54,32 @@ export class HnService {
     this.eofSubject.next(val);
   }
 
-  next() {
-    if (this.eof) {
-      return;
+  nextPage() {
+    if (!this.eof) {
+      this.currentPage = +this.currentPage + 1;
     }
-    this.currentPage = this.currentPage + 1;
-    this.fetchNews();
+    return {
+      type: this.currentNewsType,
+      page: this.currentPage,
+    };
   }
 
-  prev() {
+  prevPage() {
     if (this.currentPage <= 1) {
       this.currentPage = 1;
-      return;
+    } else {
+      this.eof = false;
+      this.currentPage = +this.currentPage - 1;
     }
-    this.eof = false;
-    this.currentPage = this.currentPage - 1;
-    this.fetchNews();
+    return {
+      type: this.currentNewsType,
+      page: this.currentPage,
+    };
   }
 
   private fetchNews(options?) {
     this.loadingSubject.next(true);
-    fetch(this.currentUrl + `?page=${this.currentPage}`, options)
+    fetch(this.apiUrl + `?page=${this.currentPage}`, options)
       .then((res) => {
         res.json().then((result) => {
           if (!result || !result.length) {

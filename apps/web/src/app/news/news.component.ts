@@ -5,7 +5,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HnService } from '../services/hn.service';
@@ -41,24 +41,25 @@ export class NewsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private hnService: HnService
   ) {}
 
   ngOnInit() {
-    combineLatest([this.route.params, this.route.queryParams])
+    combineLatest([this.route.url, this.route.queryParams])
       .pipe(
         map(([params, query]) => {
           return {
-            select: params.select || 'news',
+            select: params[0].path,
             page: query.page || 1,
           };
         })
       )
       .subscribe((val) => {
         this.subscription = this.hnService
-          .select(val.select)
+          .select(val.select, val.page)
           .subscribe((data) => {
             this.data = data;
             this.cdr.markForCheck();
@@ -75,10 +76,12 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   prev() {
-    this.hnService.prev();
+    const state = this.hnService.prevPage();
+    this.router.navigate([state.type], { queryParams: { page: state.page }});
   }
 
   next() {
-    this.hnService.next();
+    const state = this.hnService.nextPage();
+    this.router.navigate([state.type], { queryParams: { page: state.page }});
   }
 }
