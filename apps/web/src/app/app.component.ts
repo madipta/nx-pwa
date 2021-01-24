@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   HostBinding,
@@ -25,41 +26,47 @@ import { HnService } from './services/hn.service';
             PWA
           </span>
         </h1>
-        <nav class="flex-grow flex items-center justify-end leading-tight text-white text-sm">
-          <a routerLink="/top" class="px-1 mx-1">Top</a>
-          <a routerLink="/news" class="px-1 mx-1">News</a>
-          <a routerLink="/show" class="px-1 mx-1">Show</a>
-          <a routerLink="/ask" class="px-1 mx-1">Ask</a>
-          <a routerLink="/jobs" class="px-1 mx-1">Jobs</a>
+        <nav class="flex-grow flex items-center justify-end text-white text-xs">
+          <a routerLink="/news/top" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Top</a>
+          <a
+            routerLink="/news"
+            routerLinkActive="bg-blue-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="px-2 py-1 rounded mr-1"
+          >News</a>
+          <a routerLink="/news/show" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Show</a>
+          <a routerLink="/news/ask" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Ask</a>
+          <a routerLink="/news/jobs" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Jobs</a>
         </nav>
       </div>
     </div>
-    <div 
-      #scrollEl 
+    <div
+      #scrollEl
       class="bg-white w-full max-w-screen-sm overflow-x-hidden overflow-y-auto mx-auto">
       <router-outlet></router-outlet>
     </div>
     <div
       *ngIf="isLoading"
-      class="fixed top-0 bottom-0 left-0 right-0 bg-gray-200 opacity-40 z-90">
-    </div>
+      class="fixed top-0 bottom-0 left-0 right-0 bg-gray-200 opacity-40 z-90"
+    ></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('className') rootClass = 'relative flex flex-col h-screen overflow-hidden';
-  @ViewChild('scrollEl') scrollEl: ElementRef
+  @ViewChild('scrollEl') scrollEl: ElementRef;
 
   subscription: Subscription;
   isLoading = false;
 
-  constructor(private hnService: HnService) {}
+  constructor(private cdr: ChangeDetectorRef, private hnService: HnService) {}
 
   ngOnInit(): void {
-    this.subscription = this.hnService.loading$.subscribe(val => {
+    this.subscription = this.hnService.loading$.subscribe((val) => {
       this.isLoading = val;
+      this.cdr.markForCheck();
       if (val) {
-        this.scrollEl.nativeElement.scroll(0,0);
+        this.scrollEl.nativeElement.scroll(0, 0);
       }
     });
   }

@@ -13,8 +13,12 @@ export const routes: Routes = [
     component: NewsComponent,
   },
   {
-    path: ':id',
+    path: 'item/:id',
     component: NewsDetailComponent,
+  },
+  {
+    path: ':select',
+    component: NewsComponent,
   },
 ];
 

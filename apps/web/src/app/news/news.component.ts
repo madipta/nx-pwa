@@ -5,8 +5,10 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { HnService, NewsType } from '../services/hn.service';
+import { ActivatedRoute } from '@angular/router';
+import { combineLatest, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HnService } from '../services/hn.service';
 
 @Component({
   selector: 'nx-pwa-news',
@@ -38,14 +40,29 @@ export class NewsComponent implements OnInit, OnDestroy {
   data: { page: number; result: [] };
   subscription: Subscription;
 
-  constructor(private cdr: ChangeDetectorRef, private hnService: HnService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
+    private hnService: HnService
+  ) {}
 
   ngOnInit() {
-    this.subscription = this.hnService
-      .select(NewsType.News)
-      .subscribe((data) => {
-        this.data = data;
-        this.cdr.markForCheck();
+    combineLatest([this.route.params, this.route.queryParams])
+      .pipe(
+        map(([params, query]) => {
+          return {
+            select: params.select || 'news',
+            page: query.page || 1,
+          };
+        })
+      )
+      .subscribe((val) => {
+        this.subscription = this.hnService
+          .select(val.select)
+          .subscribe((data) => {
+            this.data = data;
+            this.cdr.markForCheck();
+          });
       });
   }
 

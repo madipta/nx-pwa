@@ -56,6 +56,6 @@ export class NewsItemComponent {
   constructor(private route: Router) {}
 
   detail(id) {
-    this.route.navigate(['news', id]);
+    this.route.navigate(['news/item', id]);
   }
 }
