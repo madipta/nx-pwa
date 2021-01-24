@@ -6,3 +6,9 @@ This project was generated using [Nx](https://nx.dev).
 
 ## Progressive Web App 
 HackerNews clone using Nx monorepo + Angular
+
+
+<p align="center"><img src="https://github.com/madipta/nx-pwa/blob/master/screenshot/screenshot-1-min.png?raw=true" width="450"></p>
+
+
+<p align="center"><img src="https://github.com/madipta/nx-pwa/blob/master/screenshot/screenshot-2-min.png?raw=true" width="450"></p>
