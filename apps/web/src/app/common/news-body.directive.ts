@@ -6,6 +6,6 @@ import { Directive, ElementRef } from '@angular/core';
 export class NewsBodyDirective {
   constructor(el: ElementRef) {
     const html = el.nativeElement as HTMLElement;
-    html.classList.add(...'flex flex-col px-4 pt-2 pb-6 overflow-x-hidden overflow-y-auto'.split(' '));
+    html.classList.add(...'flex flex-col px-4 pt-2 pb-16'.split(' '));
   }
 }

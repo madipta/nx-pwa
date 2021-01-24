@@ -5,7 +5,7 @@ import { HnService } from '../services/hn.service';
 import { NewsDetailDto } from '../services/news-detail.dto';
 
 @Component({
-  selector: 'nx-pwa-news-comment',
+  selector: 'nx-pwa-news-detail',
   template: `
     <div 
       *ngIf="newsDetail$ | async as detail"
@@ -21,9 +21,9 @@ import { NewsDetailDto } from '../services/news-detail.dto';
         <span 
           class="border-l pl-2 border-gray-200 ml-2 whitespace-nowrap">{{detail.time_ago}}</span>
       </p>
-      <div class="mt-6">
-        <h3 class="tracking-wide text-gray-600 pb-1 border-b border-gray-200 mb-6">{{detail.comments_count}} comments</h3>
-        {{detail.comments | json}}
+      <div class="my-6">
+        <h3 class="tracking-wide text-gray-600 pb-1 border-b border-gray-200">{{detail.comments_count}} comments</h3>
+        <nx-pwa-news-comments [comments]="detail.comments"></nx-pwa-news-comments>
       </div>
     </div>
   `,

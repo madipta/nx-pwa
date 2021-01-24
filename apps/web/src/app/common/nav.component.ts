@@ -3,18 +3,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'nx-pwa-nav',
   template: `
-    <div class="fixed bottom-0 left-0 right-0 text-sm">
-      <div class="flex items-center justify-center bg-white py-1 border-t border-blue-100">
+    <div class="fixed bottom-0 left-0 right-0 text-center text-sm">
+      <p class="inline-block bg-blue-50 px-4 pb-1 pt-2 rounded-t-2xl border border-blue-200 shadow-lg mx-auto">
         <a
           (click)="onPrevClick()"
-          class="cursor-pointer font-medium text-blue-500 tracking-tight px-2 py-1 focus:outline-none"
+          [ngClass]="{
+            'text-blue-500': page > 1,
+            'text-blue-300': page <= 1
+          }"
+          class="cursor-pointer font-medium tracking-tight px-2 py-1 focus:outline-none"
         >prev</a>
-        <span class="text-xs text-gray-500 px-4">{{ page }}</span>
+        <span class="text-xs text-gray-700 px-4">{{ page }}</span>
         <a
           (click)="onNextClick()"
           class="cursor-pointer font-medium text-blue-500 tracking-tight px-2 py-1 focus:outline-none"
         >next</a>
-      </div>
+      </p>
     </div>
   `,
 })

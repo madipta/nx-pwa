@@ -5,6 +5,7 @@ import { AppCommonModule } from '../common/app-common.module';
 import { NewsComponent } from './news.component';
 import { NewsDetailComponent } from './news-detail.component';
 import { NewsCommentComponent } from './news-comment.component';
+import { NewsCommentsComponent } from './news-comments.component';
 
 export const routes: Routes = [
   {
@@ -18,7 +19,12 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [NewsComponent, NewsDetailComponent, NewsCommentComponent],
+  declarations: [
+    NewsComponent,
+    NewsDetailComponent,
+    NewsCommentComponent,
+    NewsCommentsComponent,
+  ],
   imports: [CommonModule, AppCommonModule, RouterModule.forChild(routes)],
 })
 export class NewsModule {}

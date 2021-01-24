@@ -12,11 +12,6 @@ import { HnService, NewsType } from '../services/hn.service';
   selector: 'nx-pwa-news',
   template: `
     <ng-container *ngIf="data">
-      <nx-pwa-nav
-        [page]="data.page"
-        (prev)="prev()"
-        (next)="next()"
-      ></nx-pwa-nav>
       <div nxPwaNewsBody>
         <nx-pwa-news-item
           *ngFor="let res of data.result; index as i; trackBy: trackByFn"
@@ -30,6 +25,11 @@ import { HnService, NewsType } from '../services/hn.service';
           [comments_count]="res.comments_count"
         ></nx-pwa-news-item>
       </div>
+      <nx-pwa-nav
+        [page]="data.page"
+        (prev)="prev()"
+        (next)="next()"
+      ></nx-pwa-nav>
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

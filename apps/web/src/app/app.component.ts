@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   HostBinding,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HnService } from './services/hn.service';
@@ -32,7 +34,9 @@ import { HnService } from './services/hn.service';
         </nav>
       </div>
     </div>
-    <div class="w-full mb-9 max-w-screen-sm overflow-auto mx-auto">
+    <div 
+      #scrollEl 
+      class="bg-white w-full max-w-screen-sm overflow-x-hidden overflow-y-auto mx-auto">
       <router-outlet></router-outlet>
     </div>
     <div
@@ -44,6 +48,7 @@ import { HnService } from './services/hn.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('className') rootClass = 'relative flex flex-col h-screen overflow-hidden';
+  @ViewChild('scrollEl') scrollEl: ElementRef
 
   subscription: Subscription;
   isLoading = false;
@@ -53,7 +58,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.hnService.loading$.subscribe(val => {
       this.isLoading = val;
-    })
+      if (val) {
+        this.scrollEl.nativeElement.scroll(0,0);
+      }
+    });
   }
 
   ngOnDestroy(): void {

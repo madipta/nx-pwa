@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
         </p>
         <p class="leading-relaxed text-xs text-gray-400 mt-2 break-all">
           <span *ngIf="user" class="whitespace-nowrap">by
-            <i class="cursor-pointer text-pink-500">{{user}}</i>
+            <i class="text-pink-500">{{user}}</i>
           </span>
           <span 
             *ngIf="time_ago"
