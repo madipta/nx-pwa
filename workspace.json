@@ -23,7 +23,16 @@
               "apps/web/src/manifest.webmanifest"
             ],
             "styles": [
-              "apps/web/src/styles.scss"
+              {
+                "input": "apps/web/src/styles/base.scss", 
+                "inject": false, 
+                "bundleName": "base" 
+              },
+              {
+                "input": "apps/web/src/styles/styles.scss", 
+                "inject": false, 
+                "bundleName": "styles" 
+              }
             ],
             "scripts": []
           },

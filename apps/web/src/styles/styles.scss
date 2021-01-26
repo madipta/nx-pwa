@@ -1,24 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
-@import "tailwindcss/base";
+
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
 /* Works on Firefox */
+/*
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(229, 231, 235, var(--tw-bg-opacity)) transparent;
 }
+*/
 
 /* Works on Chrome, Edge, and Safari */
+/*
 *::-webkit-scrollbar {
   width: 5px;
 }
+*/
 
+/*
 *::-webkit-scrollbar-track {
   background: transparent;
 }
-
+*/
+/*
 *::-webkit-scrollbar-thumb {
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
   border-radius: 20px;
 }
+*/

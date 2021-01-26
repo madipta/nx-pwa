@@ -8,11 +8,31 @@
     <meta name="theme-color" content="#D97706" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="preconnect" href="https://api.hackerwebapp.com">
+    <link rel="preconnect" href="https://api.hackerwebapp.com" />
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="base.css" />
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="styles.css" />
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(229, 231, 235, var(--tw-bg-opacity)) transparent;
+      }
+      *::-webkit-scrollbar {
+        width: 5px;
+      }
+      *::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      *::-webkit-scrollbar-thumb {
+        background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+        border-radius: 20px;
+      }
+    </style>
   </head>
   <body class="bg-gray-100 font-sans overflow-hidden">
     <nx-pwa-root>
-      <div class="bg-gray-200 flex flex-col place-content-center h-screen mx-auto">
+      <div
+        class="bg-gray-200 flex flex-col place-content-center h-screen mx-auto"
+      >
         <h1 class="flex flex-col items-center justify-center">
           <span class="text-sm sm:text-xl font-semibold ml-1">NGPWA</span>
           <span>Loading...</span>
