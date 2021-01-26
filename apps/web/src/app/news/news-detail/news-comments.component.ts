@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { NewsCommentDto } from '../services/news-comment.dto';
+import { NewsCommentDto } from '../../services/news-comment.dto';
 
 @Component({
   selector: 'nx-pwa-news-comments',

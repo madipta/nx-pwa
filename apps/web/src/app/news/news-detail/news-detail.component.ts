@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HnService } from '../services/hn.service';
-import { NewsDetailDto } from '../services/news-detail.dto';
+import { HnService } from '../../services/hn.service';
+import { NewsDetailDto } from '../../services/news-detail.dto';
 
 @Component({
   selector: 'nx-pwa-news-detail',

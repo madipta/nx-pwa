@@ -14,7 +14,7 @@ import { HnService } from '../services/hn.service';
   selector: 'nx-pwa-news',
   template: `
     <ng-container *ngIf="data">
-      <div nxPwaNewsBody>
+      <div class="flex flex-col px-4 pt-2 pb-16">
         <nx-pwa-news-item
           *ngFor="let res of data.result; index as i; trackBy: trackByFn"
           [item_id]="res.id"
@@ -48,11 +48,11 @@ export class NewsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    combineLatest([this.route.url, this.route.queryParams])
+    combineLatest([this.route.params, this.route.queryParams])
       .pipe(
         map(([params, query]) => {
           return {
-            select: params[0].path,
+            select: params.select,
             page: query.page || 1,
           };
         })
