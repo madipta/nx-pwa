@@ -20,6 +20,8 @@ import { HnService } from './services/hn.service';
           <img
             alt="NGPWA"
             src="./assets/icons/icon-72x72.png"
+            height="36"
+            width="36"
             class="w-9 h-9"
           />
           <span class="leading-tight text-blue-300 text-xl font-semibold ml-1">
