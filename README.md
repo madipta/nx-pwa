@@ -9,6 +9,7 @@ HackerNews clone using Nx monorepo + Angular + TailwindCSS
 
 API: node-hnapi.herokuapp.com
 
+Live Demo: https://nx-pwa.vercel.app/
 
 <p>
   <img src="https://github.com/madipta/nx-pwa/blob/master/screenshot/screenshot-1-min.png?raw=true" width="250">
