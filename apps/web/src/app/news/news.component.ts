@@ -52,7 +52,7 @@ export class NewsComponent implements OnInit, OnDestroy {
       .pipe(
         map(([params, query]) => {
           return {
-            select: params.select,
+            select: params.select || 'newest',
             page: query.page || 1,
           };
         })

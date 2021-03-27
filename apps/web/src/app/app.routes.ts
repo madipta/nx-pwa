@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
   {
+    path: 'news/newest',
+    loadChildren: async() => (await import('./news/news.module')).NewsModule,
+  },
+  {
     path: 'news',
     children: [
       {
