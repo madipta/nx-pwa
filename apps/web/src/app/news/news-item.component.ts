@@ -14,19 +14,19 @@ import { Router } from '@angular/router';
             [href]="url" 
             target="_blank"
             *ngIf="!!domain"
-            class="cursor-pointer text-gray-600">{{ title }}</a>
+            class="cursor-pointer text-gray-700">{{ title }}</a>
           <a 
             (click)="detail(item_id)"
             *ngIf="!domain"
-            class="cursor-pointer text-gray-600">{{ title }}</a>
+            class="cursor-pointer text-gray-700">{{ title }}</a>
         </p>
         <p 
           *ngIf="domain"
-          class="tracking-wide text-xs text-gray-400">({{domain}})
+          class="tracking-wide text-xs text-gray-500">({{domain}})
         </p>
         <p class="leading-relaxed text-xs text-gray-400 mt-2 break-all">
           <span *ngIf="user" class="whitespace-nowrap">by
-            <i class="text-pink-500">{{user}}</i>
+            <i class="text-pink-600">{{user}}</i>
           </span>
           <span 
             *ngIf="time_ago"
@@ -35,7 +35,7 @@ import { Router } from '@angular/router';
           <span *ngIf="comments_count>-1" class="whitespace-nowrap">
             <a 
               (click)="detail(item_id)"
-              class="cursor-pointer underline text-gray-600">{{comments_count}} comments
+              class="cursor-pointer underline text-gray-700">{{comments_count}} comments
             </a>
           </span>
         </p>

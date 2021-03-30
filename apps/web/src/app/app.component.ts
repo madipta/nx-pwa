@@ -22,13 +22,12 @@ import { HnService } from './services/hn.service';
             src="./assets/icons/icon-72x72.png"
             height="36"
             width="36"
-            class="w-9 h-9"
           />
           <span class="leading-tight text-blue-300 text-xl font-semibold ml-1">
             PWA
           </span>
         </h1>
-        <nav class="flex-grow flex items-center justify-end text-white text-xs">
+        <nav class="flex-grow flex items-center justify-end text-white text-xs font-medium">
           <a routerLink="/news/top" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Top</a>
           <a routerLink="/news/newest" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1" >News</a>
           <a routerLink="/news/show" routerLinkActive="bg-blue-500" class="px-2 py-1 rounded mr-1">Show</a>
