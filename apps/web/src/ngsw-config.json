@@ -26,5 +26,21 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "hn",
+      "urls": ["https://api.hackerwebapp.com"],
+      "version": 1,
+      "cacheConfig": {
+        "maxSize": 20000,
+        "maxAge": "30d",
+        "timeout": "1m",
+        "strategy": "freshness"
+      },
+      "cacheQueryOptions": {
+        "ignoreSearch": false
+      }
+    }
   ]
 }
